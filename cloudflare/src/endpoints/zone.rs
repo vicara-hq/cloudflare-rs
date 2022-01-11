@@ -75,9 +75,14 @@ impl<'a> Endpoint<(), (), ()> for DeleteZone<'a> {
 }
 
 #[derive(Serialize, Clone, Debug, Default)]
+pub struct AccountId<'a> {
+    pub id: &'a str,
+}
+
+#[derive(Serialize, Clone, Debug, Default)]
 pub struct CreateZoneParams<'a> {
     pub name: &'a str,
-    pub account: &'a str,
+    pub account: AccountId<'a>,
     pub jump_start: Option<bool>,
     #[serde(rename = "type")]
     pub zone_type: Option<Type>,
