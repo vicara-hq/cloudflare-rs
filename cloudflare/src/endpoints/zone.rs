@@ -45,7 +45,7 @@ impl<'a> Endpoint<Zone> for ZoneDetails<'a> {
 pub struct CreateZone<'a> {
     pub params: CreateZoneParams<'a>,
 }
-impl<'a> Endpoint<(), (), CreateZoneParams<'a>> for CreateZone<'a> {
+impl<'a> Endpoint<Zone, (), CreateZoneParams<'a>> for CreateZone<'a> {
     fn method(&self) -> Method {
         Method::POST
     }
