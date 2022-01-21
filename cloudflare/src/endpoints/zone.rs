@@ -61,6 +61,21 @@ impl<'a> Endpoint<Zone, (), CreateZoneParams<'a>> for CreateZone<'a> {
     }
 }
 
+/// Delete Zone
+/// https://api.cloudflare.com/#zone-delete-zone
+pub struct DeleteZone<'a> {
+    pub identifier: &'a str,
+}
+impl<'a> Endpoint<(), (), ()> for DeleteZone<'a> {
+    fn method(&self) -> Method {
+        Method::Delete
+    }
+
+    fn path(&self) -> String {
+        format!("zones/{}", self.identifier)
+    }
+}
+
 #[derive(Serialize, Clone, Debug, Default)]
 pub struct AccountId<'a> {
     pub id: &'a str,
