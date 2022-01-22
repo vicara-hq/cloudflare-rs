@@ -64,7 +64,7 @@ impl<'a> Endpoint<Zone, (), CreateZoneParams<'a>> for CreateZone<'a> {
 pub struct DeleteZone<'a> {
     pub identifier: &'a str,
 }
-impl<'a> Endpoint<(), (), DeleteZoneResponse<'a>> for DeleteZone<'a> {
+impl<'a> Endpoint<DeleteZoneResponse, (), ()> for DeleteZone<'a> {
     fn method(&self) -> Method {
         Method::DELETE
     }
@@ -74,9 +74,9 @@ impl<'a> Endpoint<(), (), DeleteZoneResponse<'a>> for DeleteZone<'a> {
     }
 }
 
-#[derive(Serialize, Clone, Debug, Default)]
-pub struct DeleteZoneResponse<'a> {
-    pub id: &'a str,
+#[derive(Deserialize, Debug)]
+pub struct DeleteZoneResponse {
+    pub id: String,
 }
 
 #[derive(Serialize, Clone, Debug, Default)]
@@ -146,3 +146,4 @@ pub struct Zone {
 // TODO: This should probably be a derive macro
 impl ApiResult for Zone {}
 impl ApiResult for Vec<Zone> {}
+impl ApiResult for DeleteZoneResponse {}
