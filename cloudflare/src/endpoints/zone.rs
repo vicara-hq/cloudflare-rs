@@ -64,7 +64,7 @@ impl<'a> Endpoint<Zone, (), CreateZoneParams<'a>> for CreateZone<'a> {
 pub struct DeleteZone<'a> {
     pub identifier: &'a str,
 }
-impl<'a> Endpoint<(), (), ()> for DeleteZone<'a> {
+impl<'a> Endpoint<(), (), DeleteZoneResponse<'a>> for DeleteZone<'a> {
     fn method(&self) -> Method {
         Method::DELETE
     }
@@ -72,6 +72,11 @@ impl<'a> Endpoint<(), (), ()> for DeleteZone<'a> {
     fn path(&self) -> String {
         format!("zones/{}", self.identifier)
     }
+}
+
+#[derive(Serialize, Clone, Debug, Default)]
+pub struct DeleteZoneResponse<'a> {
+    pub id: &'a str,
 }
 
 #[derive(Serialize, Clone, Debug, Default)]
