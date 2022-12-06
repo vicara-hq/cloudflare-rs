@@ -126,6 +126,13 @@ pub enum Status {
     Deactivated,
 }
 
+#[derive(Deserialize, Debug)]
+#[serde(rename_all = "lowercase", tag = "type")]
+pub enum Owner {
+    User { id: Option<String>, email: Option<String> },
+    Organization { id: String, name: String },
+}
+
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "lowercase")]
 pub enum Type {
@@ -188,6 +195,8 @@ pub struct Zone {
     pub original_name_servers: Option<Vec<String>>,
     /// Registrar for the domain at the time of switching to Cloudflare
     pub original_registrar: Option<String>,
+    /// Information about the owner of the zone
+    pub owner: Owner,
     /// Indicates if the zone is only using Cloudflare DNS services. A true value means the zone
     /// will not receive security or performance benefits.
     pub paused: bool,
