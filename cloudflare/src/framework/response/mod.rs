@@ -4,7 +4,7 @@ pub use apifail::*;
 use serde::Deserialize;
 use serde_json::value::Value as JsonValue;
 
-#[derive(Deserialize, Debug, Eq, PartialEq)]
+#[derive(Deserialize, Debug, PartialEq, Eq)]
 pub struct ApiSuccess<ResultType> {
     pub result: ResultType,
     pub result_info: Option<JsonValue>,

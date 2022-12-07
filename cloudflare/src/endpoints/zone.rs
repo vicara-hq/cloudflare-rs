@@ -1,10 +1,12 @@
-use crate::framework::endpoint::serialize_query;
+
 use crate::framework::{
-    endpoint::{EndpointSpec, Method},
+    endpoint::{serialize_query, EndpointSpec, Method},
     response::ApiResult,
 };
 use crate::framework::{OrderDirection, SearchMatch};
 use serde::{Deserialize, Serialize};
+
+pub mod custom_hostname;
 
 /// List Zones
 /// List, search, sort, and filter your zones
@@ -126,8 +128,14 @@ pub enum Status {
 #[derive(Deserialize, Debug)]
 #[serde(rename_all = "lowercase", tag = "type")]
 pub enum Owner {
-    User { id: Option<String>, email: Option<String> },
-    Organization { id: String, name: String },
+    User {
+        id: Option<String>,
+        email: Option<String>,
+    },
+    Organization {
+        id: String,
+        name: String,
+    },
 }
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
