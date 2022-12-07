@@ -1,3 +1,5 @@
+pub mod custom_hostname;
+
 use crate::framework::{
     endpoint::{Endpoint, Method},
     response::ApiResult,
