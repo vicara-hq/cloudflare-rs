@@ -1,3 +1,5 @@
+pub mod custom_hostname;
+
 use crate::endpoints::{account::AccountDetails, plan::Plan};
 use crate::framework::{
     endpoint::{Endpoint, Method},
