@@ -1,3 +1,5 @@
+pub mod certificates;
+pub mod custom_hostname;
 
 use crate::framework::{
     endpoint::{serialize_query, EndpointSpec, Method},
@@ -5,8 +7,6 @@ use crate::framework::{
 };
 use crate::framework::{OrderDirection, SearchMatch};
 use serde::{Deserialize, Serialize};
-
-pub mod custom_hostname;
 
 /// List Zones
 /// List, search, sort, and filter your zones
