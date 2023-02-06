@@ -59,6 +59,7 @@ pub enum CertificateRequestedValidity {
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub struct CreateCertifcateResponse {
     pub id: String,
+    pub certificate: String,
 }
 
 impl ApiResult for CreateCertifcateResponse {}
