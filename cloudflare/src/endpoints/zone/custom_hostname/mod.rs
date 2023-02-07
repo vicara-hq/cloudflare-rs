@@ -10,11 +10,32 @@ pub use edit_custom_hostname::*;
 
 use serde::{Deserialize, Serialize};
 
+#[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
+#[serde(rename_all = "snake_case")]
+pub enum ActivationStatus {
+    Active,
+    Pending,
+    ActiveRedeploying,
+    Moved,
+    PendingDeletion,
+    Deleted,
+    PendingBlocked,
+    PendingMigration,
+    PendingProvisioned,
+    TestPending,
+    TestActive,
+    TestActiveApex,
+    TestBlocked,
+    TestFailed,
+    Provisioned,
+    Blocked,
+}
+
 // https://api.cloudflare.com/#custom-hostname-for-a-zone-properties
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 pub struct CustomHostame {
     pub id: String,
-    pub status: String,
+    pub status: ActivationStatus,
 }
 
 impl ApiResult for CustomHostame {}
