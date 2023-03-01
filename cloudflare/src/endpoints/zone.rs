@@ -127,19 +127,6 @@ pub enum Status {
     Deactivated,
 }
 
-#[derive(Deserialize, Debug)]
-#[serde(rename_all = "lowercase", tag = "type")]
-pub enum Owner {
-    User {
-        id: Option<String>,
-        email: Option<String>,
-    },
-    Organization {
-        id: String,
-        name: String,
-    },
-}
-
 #[derive(Serialize, Deserialize, Debug, Clone)]
 #[serde(rename_all = "lowercase")]
 pub enum Type {

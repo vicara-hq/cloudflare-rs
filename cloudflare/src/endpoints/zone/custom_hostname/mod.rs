@@ -7,6 +7,7 @@ mod edit_custom_hostname;
 pub use create_custom_hostname::*;
 pub use delete_custom_hostname::*;
 pub use edit_custom_hostname::*;
+use serde::{Deserialize, Serialize};
 
 #[derive(Deserialize, Serialize, Debug, Clone, PartialEq, Eq)]
 #[serde(rename_all = "snake_case")]

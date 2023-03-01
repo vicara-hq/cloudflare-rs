@@ -1,3 +1,5 @@
+use serde::Serialize;
+
 use crate::framework::endpoint::{Endpoint, Method};
 
 use super::{CustomHostame, SslParams};
@@ -12,7 +14,7 @@ pub struct CreateCustomHostname<'a> {
 
 impl<'a> Endpoint<CustomHostame, (), CreateCustomHostnameParams> for CreateCustomHostname<'a> {
     fn method(&self) -> Method {
-        Method::Post
+        Method::POST
     }
     fn path(&self) -> String {
         format!("zones/{}/custom_hostnames", self.zone_identifier)

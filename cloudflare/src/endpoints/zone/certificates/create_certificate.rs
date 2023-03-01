@@ -1,3 +1,4 @@
+use serde::{Deserialize, Serialize};
 use serde_repr::{Deserialize_repr, Serialize_repr};
 
 use crate::framework::{
@@ -14,7 +15,7 @@ pub struct CreateCertifcate {
 
 impl Endpoint<CreateCertifcateResponse, (), CreateCertifcateBody> for CreateCertifcate {
     fn method(&self) -> Method {
-        Method::Post
+        Method::POST
     }
     fn path(&self) -> String {
         "certificates".to_string()

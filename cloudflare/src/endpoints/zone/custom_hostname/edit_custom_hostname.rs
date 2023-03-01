@@ -1,3 +1,5 @@
+use serde::Serialize;
+
 use crate::framework::endpoint::{Endpoint, Method};
 
 use super::{CustomHostame, SslParams};
@@ -13,7 +15,7 @@ pub struct EditCustomHostname<'a> {
 
 impl<'a> Endpoint<CustomHostame, (), EditCustomHostnameParams> for EditCustomHostname<'a> {
     fn method(&self) -> Method {
-        Method::Patch
+        Method::PATCH
     }
     fn path(&self) -> String {
         format!(

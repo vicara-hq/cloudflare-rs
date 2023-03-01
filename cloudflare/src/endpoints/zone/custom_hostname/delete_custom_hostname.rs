@@ -1,3 +1,5 @@
+use serde::{Deserialize, Serialize};
+
 use crate::framework::{
     endpoint::{Endpoint, Method},
     response::ApiResult,
@@ -13,7 +15,7 @@ pub struct DeleteCustomHostname<'a> {
 
 impl<'a> Endpoint<CustomHostameDeleteID, (), ()> for DeleteCustomHostname<'a> {
     fn method(&self) -> Method {
-        Method::Delete
+        Method::DELETE
     }
     fn path(&self) -> String {
         format!(

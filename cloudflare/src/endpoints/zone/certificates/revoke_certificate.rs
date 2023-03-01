@@ -1,3 +1,5 @@
+use serde::{Deserialize, Serialize};
+
 use crate::framework::{
     endpoint::{Endpoint, Method},
     response::ApiResult,
@@ -12,7 +14,7 @@ pub struct RevokeCertificate<'a> {
 
 impl<'a> Endpoint<RevokedCertificateID, (), ()> for RevokeCertificate<'a> {
     fn method(&self) -> Method {
-        Method::Delete
+        Method::DELETE
     }
     fn path(&self) -> String {
         format!("certificates/{}", self.identifier)
